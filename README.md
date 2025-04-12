@@ -43,7 +43,8 @@ Datasets can be referenced by name or number:
 ## Usage Examples
 
 ### Data Loading
-
+To load the datasets, use the following commands in your terminal:
+ 
 ```bash
 # Load all datasets
 python base_loader.py
@@ -53,11 +54,14 @@ python base_loader.py [dataset_name]
 ```
 
 ### Sample Visualization
+You can see the reconstruction of processed images using following commands:
 
 ```sh
 python data_samples.py [dataset_name]
 ```
 ### Clustering
+Conduct the experiment by:
+
 ```sh
 # Run specific model on dataset (use name or number)
 python main.py --dataset [name|number] --model [ldmgi|kmeans|1|2]
@@ -69,10 +73,11 @@ python main.py --dataset all --model all         # run all combinations
 ```
 
 ### Output
+
 ```
-├── ./data/processed/
-├── ./image_samples/
-├── ./results/
+├── Processed datasets (.npz):./data/processed/
+├── Image samples: ./image_samples/
+├── Results (.png/.csv): ./results/
 ```
 
 
