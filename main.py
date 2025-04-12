@@ -79,8 +79,8 @@ def main():
                 elif item in dataset_name_to_key:
                     selected_datasets.append(item)
                 else:
-                    print(f"Warning: Unknown dataset identifier '{item}', skipping")
-
+                    print(f"Error: Unrecognized dataset.\n"
+                          f"Available datasets are: {', '.join(f'{k}: {v}' for k, v in datasets.items())}.")
 
         if 'all' in args.model:
             selected_models = list(models.values())
@@ -92,7 +92,8 @@ def main():
                 elif item in model_name_to_key:
                     selected_models.append(item)
                 else:
-                    print(f"Warning: Unknown model identifier '{item}', skipping")
+                    print(f"Error: Unrecognized model.\n"
+                          f"Available models are: {', '.join(f'{k}: {v}' for k, v in models.items())}.")
 
         for dataset in selected_datasets:
             X, y = load_dataset(dataset)
@@ -107,8 +108,11 @@ def main():
         print(f"An error occurred: {e}")
 
     finally:
-        save_dict_to_txt(all_stats, './results/results.txt')
-        print("Results have been saved to 'results.txt'.")
+        if all_stats:
+            save_dict_to_txt(all_stats, './results/results.txt')
+            print("Results have been saved to 'results.txt'.")
+        else:
+            print("No results to save.")
 
 if __name__ == '__main__':
     main()
